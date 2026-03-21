@@ -1,65 +1,65 @@
 ---
 name: software-project-management
-description: Run LLM-first and hybrid software projects with clear scope, dependencies, tests, durable files, and guardrails. Use when Codex needs to plan, govern, rescue, or structure software delivery driven by models or subagents; choose which human-project controls are actually necessary; define scope, acceptance, dependencies, documentation, release readiness, evals, and agent operating rules.
+description: Structure software projects run by a single human operator using LLMs or subagents. Use when Codex needs to plan, rescue, or govern solo operator delivery with clear scope, durable files, dependency sequencing, tests or evals, change control, and guardrails, while adding deadline or release controls only when real external constraints exist.
 ---
 
 # Software Project Management
 
 ## Overview
 
-Use this skill to turn vague AI-assisted delivery work into a controlled execution system. Default to scope, acceptance, dependency sequencing, durable files, tests or evals, and permissions; add calendars, budgets, staffing, and stakeholder rituals only when external human constraints require them.
+Use this skill to turn vague AI-assisted delivery work into a controlled execution system for one human operator. Default to objective, scope, acceptance, dependency sequencing, durable files, tests or evals, risk or change logs, and permissions. Add deadline, approval, vendor, budget, or release-window controls only when the project actually has those external constraints.
 
 ## Quick Start
 
 1. Inspect the workspace for existing project artifacts before inventing new ones.
-2. Classify the work as agentic-first, hybrid, or human-coordinated.
-3. Create or repair the minimum control system: owner, scope, acceptance, work plan, dependencies, risk/change controls, documentation, and guardrails.
-4. Produce the lightest artifact set that still preserves control.
+2. Classify the work as `solo operator default` or `external-constraint branch`.
+3. Create or repair the minimum control system: operator objective, scope, acceptance, work plan, dependency sequence, risk or change controls, documentation, and guardrails.
+4. Produce the lightest artifact set that preserves continuity across sessions, models, and agent runs.
 
 ## Workflow
 
 ### Build Context First
 
-- Extract the real objective, users, constraints, dependency landscape, acceptance bar, and release expectations. Only treat deadlines, budgets, staffing, or stakeholder rituals as first-class inputs if the project actually has them.
-- Look for an existing task brief, roadmap or execution plan, backlog, design docs, ADRs, test strategy, release plan, runbooks, risk log, and agent rule files.
+- Extract the real objective, users, constraints, dependency landscape, acceptance bar, and release expectations. Only treat deadlines, budgets, approvals, vendor schedules, or launch windows as first-class inputs if they are explicit in the project context.
+- Look for an existing task brief, execution plan, backlog, design docs, ADRs, test strategy, release plan, runbooks, risk log, and agent rule files.
 - If important information is missing, make reasonable assumptions and record them explicitly.
-- If the request is to rescue a project, diagnose the control system before proposing fixes: owner clarity, scope quality, dependency visibility, acceptance quality, risk hygiene, context legibility, tool permissions, and release or support readiness where relevant.
+- If the request is to rescue a project, diagnose the control system before proposing fixes: objective clarity, scope quality, dependency visibility, acceptance quality, risk hygiene, context legibility, tool permissions, and release readiness where relevant.
 
-### Choose the Delivery Mode
+### Choose the Control Mode
 
-- Default to agent-assisted controls when models or subagents perform most of the execution.
-- Use predictive controls only when external approvals, release windows, budgets, or fixed commitments are real constraints.
-- Use agile controls when learning and user feedback dominate and there is still meaningful human coordination around the work.
-- Use hybrid controls when external interfaces are fixed but the solution detail must evolve.
+- Default to the `solo operator` control mode when one operator is steering LLMs or subagents through the work.
+- Add the `external-constraint` branch when a fixed deadline, compliance gate, approval step, vendor dependency, quota cap, or launch window is real.
+- Add the `feedback-heavy` branch when user learning, UX iteration, or discovery dominates the work.
+- Add the `release-safety` branch when the project ships software that needs cutover, rollback, monitoring, or operating notes.
 
 ### Create or Repair the Core Artifact Set
 
 Always maintain these artifacts in some form:
 - objective and success criteria
-- named accountable owner or explicit decision path
+- operator decision record
 - source-of-truth index
 - scoped work breakdown or backlog
 - acceptance and quality criteria
-- dependency map
+- dependency map or dependency sequence
 - durable execution plan or current-state note
 - risk, issue, and change controls
 - permission and trust-boundary rules
 - documentation freshness path
 
 Add these artifacts when needed:
-- Predictive: baseline schedule, budget, milestone exits, formal change path, critical-path analysis
-- Human-coordinated agile: product goal, prioritized backlog, inspect/adapt cadence, review cadence, retrospective cadence
+- External constraints: deadline or gate log, minimal critical-path view, vendor or approval dependency list, quota or spend tracker
+- Feedback-heavy: research questions, findings log, scope-update loop
 - Agent-assisted: agent instruction entry point, model or task routing, evals, and explicit escalation rules
-- Production delivery: release, rollback, and support-handoff plan
+- Release safety: release checklist, rollback plan, monitoring checks, operating notes or runbook
 
 ### Plan and Govern the Work
 
-- Plan at two levels: whole-project direction and near-term executable detail. Only add long-range calendar plans when external commitments require them.
-- Map dependencies explicitly, including approvals, vendors, environments, data, and cross-team work.
-- Calculate and monitor a critical path only when external deadlines, approvals, or scarce shared bottlenecks make it useful.
-- Plan scarce resources only when they constrain throughput: review bandwidth, CI capacity, API quotas, model budget, or human bottlenecks.
+- Plan at two levels: whole-project direction and near-term executable detail. Only add long-range date plans when external commitments require them.
+- Map dependencies explicitly, including environments, data, approvals, vendors, quotas, and external systems when they matter.
+- Calculate and monitor a critical path only when an external deadline, approval gate, launch window, or scarce bottleneck makes it useful.
+- Plan scarce resources only when they constrain throughput: operator attention, CI capacity, API quotas, model budget, environment access, or permissions.
 - Treat scope change as a trade-off decision, not as a free addition.
-- Govern by evidence and explicit triggers, using cadence only where it improves control.
+- Govern by evidence and explicit triggers. Do not introduce recurring rituals unless they improve control for this specific project.
 
 ### Control Quality, Value, and Learning
 
@@ -74,23 +74,23 @@ Add these artifacts when needed:
 - Keep entry-point instructions short and navigational.
 - Use vendor-neutral handoff artifacts so different models can continue work safely.
 - Use subagents only for bounded parallel work or high-volume output.
-- Enforce least privilege, secret-handling rules, trust boundaries, and explicit approvals for risky actions.
+- Enforce least privilege, secret-handling rules, trust boundaries, and explicit operator approval for risky actions.
 - Revalidate prompts, models, and workflows with evals when behavior or tooling changes.
 
 ## Common Deliverables
 
-- project operating plan
+- operator project plan
 - project rescue assessment
 - artifact checklist tailored to lifecycle
-- dependency and critical-path analysis
+- dependency and sequencing analysis
 - risk, quality, and release-control plan
 - agentic execution and guardrail plan
-- human-coordination extension, only when external teams or approvals matter
+- external-constraint addendum, only when deadlines, approvals, vendors, or launch windows matter
 
 ## Reference Files
 
 - Read [references/project-rulebook.md](./references/project-rulebook.md) for the full rule system and coverage map.
-- Read [references/pm-framework-notes.md](./references/pm-framework-notes.md) only when human coordination, external approvals, fixed calendars, or organizational budgeting matter.
+- Read [references/external-constraints.md](./references/external-constraints.md) only when the project has fixed deadlines, approval gates, vendor dependencies, quota caps, launch windows, or production release risk.
 - Read [references/ai-agent-practices.md](./references/ai-agent-practices.md) when planning file-backed memory, model routing, subagents, evals, and guardrails.
 - Read [references/source-anchors.md](./references/source-anchors.md) when you need provenance, volatile vendor anchors, or a refresh point for unstable topics.
 - Do not load every reference by default. Read the smallest relevant file first.
@@ -101,5 +101,5 @@ Add these artifacts when needed:
 - Prefer concrete artifacts and decision-ready outputs over generic PM advice.
 - Make assumptions explicit whenever the workspace does not contain enough project context.
 - Distinguish stable control practices from volatile vendor recommendations.
-- Do not introduce schedules, budgets, staffing plans, stakeholder cadences, or stage gates unless the project genuinely depends on them.
+- Do not introduce date plans, budget tracking, approval workflows, recurring cadences, or stage gates unless the project genuinely depends on them.
 - If the user asks for the latest model, benchmark, or vendor workflow guidance, verify it externally before answering because the bundled source anchors are point-in-time snapshots.

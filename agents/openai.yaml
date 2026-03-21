@@ -1,4 +1,4 @@
 interface:
   display_name: "Software Project Management"
-  short_description: "Run LLM-first software projects well"
-  default_prompt: "Use $software-project-management to structure this LLM-first software project with the right artifacts, controls, tests, and guardrails."
+  short_description: "Run single-operator LLM software projects well"
+  default_prompt: "Use $software-project-management to structure this single-operator LLM-driven software project with the lightest effective artifacts, tests, and guardrails."
