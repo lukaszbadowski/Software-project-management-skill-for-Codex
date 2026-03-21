@@ -1,0 +1,4 @@
+interface:
+  display_name: "Software Project Management"
+  short_description: "Run software projects with rigorous controls"
+  default_prompt: "Use $software-project-management to plan and run this software project with the right lifecycle, artifacts, controls, and feedback loops."
