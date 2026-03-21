@@ -1,19 +1,19 @@
 ---
 name: software-project-management
-description: Structure software projects run by a single human operator using LLMs or subagents. Use when Codex needs to plan, rescue, or govern solo operator delivery with clear scope, durable files, dependency sequencing, tests or evals, change control, and guardrails, while adding deadline or release controls only when real external constraints exist.
+description: Structure software projects run by a single human operator using LLMs or subagents. Use when Codex needs to plan, rescue, or govern solo operator delivery with clear scope, small reviewable tasks, durable files, dependency sequencing, tests or evals, change control, and guardrails, while adding deadline or release controls only when real external constraints exist.
 ---
 
 # Software Project Management
 
 ## Overview
 
-Use this skill to turn vague AI-assisted delivery work into a controlled execution system for one human operator. Default to objective, scope, acceptance, dependency sequencing, durable files, tests or evals, risk or change logs, and permissions. Add deadline, approval, vendor, budget, or release-window controls only when the project actually has those external constraints.
+Use this skill to turn vague AI-assisted delivery work into a controlled execution system for one human operator. Default to objective, scope, small executable tasks, acceptance, dependency sequencing, durable files, tests or evals, risk or change logs, and permissions. Add deadline, approval, vendor, budget, or release-window controls only when the project actually has those external constraints.
 
 ## Quick Start
 
 1. Inspect the workspace for existing project artifacts before inventing new ones.
 2. Classify the work as `solo operator default` or `external-constraint branch`.
-3. Create or repair the minimum control system: operator objective, scope, acceptance, work plan, dependency sequence, risk or change controls, documentation, and guardrails.
+3. Create or repair the minimum control system: operator objective, scope, small executable tasks, acceptance, work plan, dependency sequence, risk or change controls, documentation, and guardrails.
 4. Produce the lightest artifact set that preserves continuity across sessions, models, and agent runs.
 
 ## Workflow
@@ -39,6 +39,7 @@ Always maintain these artifacts in some form:
 - operator decision record
 - source-of-truth index
 - scoped work breakdown or backlog
+- small task queue for the next executable units
 - acceptance and quality criteria
 - dependency map or dependency sequence
 - durable execution plan or current-state note
@@ -52,9 +53,18 @@ Add these artifacts when needed:
 - Agent-assisted: agent instruction entry point, model or task routing, evals, and explicit escalation rules
 - Release safety: release checklist, rollback plan, monitoring checks, operating notes or runbook
 
+### Size the Execution Units
+
+- Use milestones, themes, or phases only to group work. Do not use them as the next action.
+- Default to a task queue where each task is small enough for one focused agent run and one quick operator review.
+- Make each task narrow in scope: one subsystem, interface, document, or test surface when possible.
+- Give every task an explicit stop point, file or module scope, dependency or precondition, and acceptance check.
+- If a task would touch many unrelated areas or require a long uninterrupted run, split it before execution.
+- After each completed task, update the current-state note, record evidence, and choose the next task.
+
 ### Plan and Govern the Work
 
-- Plan at two levels: whole-project direction and near-term executable detail. Only add long-range date plans when external commitments require them.
+- Plan at three levels: overall direction, optional checkpoints, and near-term executable tasks. Only add long-range date plans when external commitments require them.
 - Map dependencies explicitly, including environments, data, approvals, vendors, quotas, and external systems when they matter.
 - Calculate and monitor a critical path only when an external deadline, approval gate, launch window, or scarce bottleneck makes it useful.
 - Plan scarce resources only when they constrain throughput: operator attention, CI capacity, API quotas, model budget, environment access, or permissions.
@@ -80,6 +90,7 @@ Add these artifacts when needed:
 ## Common Deliverables
 
 - operator project plan
+- micro-task backlog or execution queue
 - project rescue assessment
 - artifact checklist tailored to lifecycle
 - dependency and sequencing analysis
@@ -101,5 +112,8 @@ Add these artifacts when needed:
 - Prefer concrete artifacts and decision-ready outputs over generic PM advice.
 - Make assumptions explicit whenever the workspace does not contain enough project context.
 - Distinguish stable control practices from volatile vendor recommendations.
+- Prefer task queues over milestone-only plans.
+- Default task format: `Task`, `Scope`, `Depends on`, `Done when`, and `Stop after`.
+- When in doubt, split work into smaller tasks before execution.
 - Do not introduce date plans, budget tracking, approval workflows, recurring cadences, or stage gates unless the project genuinely depends on them.
 - If the user asks for the latest model, benchmark, or vendor workflow guidance, verify it externally before answering because the bundled source anchors are point-in-time snapshots.

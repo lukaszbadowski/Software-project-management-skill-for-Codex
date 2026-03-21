@@ -24,7 +24,7 @@ This document is the master rulebook bundled with the `software-project-manageme
 
 ## Purpose and How to Use This Document
 - Use this file as a rulebook for projects steered by one operator and executed partly or mostly through models or subagents.
-- Default to the lightest control system that still preserves continuity: scope, acceptance, dependency sequencing, durable files, tests or evals, change control, and permissions.
+- Default to the lightest control system that still preserves continuity: scope, small executable tasks, acceptance, dependency sequencing, durable files, tests or evals, change control, and permissions.
 - Add dates, budgets, approval paths, vendor calendars, or release-window logic only when those external constraints are real. [S04] [S05] [S08]
 - Treat the rules as a control system, not as ceremony. The goal is reliable value delivery under actual constraints. [S01] [S04] [S13]
 
@@ -53,10 +53,17 @@ This document is the master rulebook bundled with the `software-project-manageme
 
 ### R04 - Make each meaningful work item bounded, testable, and resumable
 - Applies to: solo operator, feedback-heavy, external-constraint, release-safety, agentic
-- Required artifacts: decomposed work item, acceptance criteria, resume-ready note
+- Required artifacts: decomposed work item, acceptance criteria, explicit stop point, resume-ready note
 - Why it matters: if a task cannot be checked or resumed, it is not ready for reliable agentic execution.
 - Failure prevented: vague tasks, repeated restarts, unverifiable progress
 - Source anchors: [S07] [S09] [S17]
+
+### R04A - Use milestones only as grouping; execute through small tasks
+- Applies to: solo operator, feedback-heavy, external-constraint, release-safety, agentic
+- Required artifacts: milestone or checkpoint map when useful, ordered task queue, task sizing rule
+- Why it matters: milestones help orientation but they are too coarse to be safe default execution units for Codex.
+- Failure prevented: long opaque runs, oversized diffs, weak operator visibility, and poor recovery after interruption
+- Source anchors: [S07] [S17] [S18] [S23]
 
 ## Project Prerequisites and Readiness Checks
 
@@ -92,7 +99,7 @@ This document is the master rulebook bundled with the `software-project-manageme
 
 ### R09 - Default to the solo-operator control mode
 - Applies to: solo operator, agentic
-- Required artifacts: objective, work breakdown, acceptance criteria, dependency sequence, durable current-state note
+- Required artifacts: objective, work breakdown, small task queue, acceptance criteria, dependency sequence, durable current-state note
 - Why it matters: most LLM-run work does not need extra ceremony.
 - Failure prevented: bloated process and unnecessary management artifacts
 - Source anchors: [S01] [S04] [S17]
@@ -152,7 +159,7 @@ This document is the master rulebook bundled with the `software-project-manageme
 
 ### R17 - Maintain a controlled decomposition of total work
 - Applies to: solo operator, feedback-heavy, external-constraint, release-safety, agentic
-- Required artifacts: work breakdown or backlog, dependency markers, current priority
+- Required artifacts: work breakdown or backlog, ordered task queue, dependency markers, current priority
 - Why it matters: decomposition is the basis for sequencing, estimation, and handoff safety.
 - Failure prevented: missing work, duplicate work, and vague execution
 - Source anchors: [S07] [S09]
@@ -166,10 +173,10 @@ This document is the master rulebook bundled with the `software-project-manageme
 
 ## Planning: Backlog, Estimates, Dependencies, Critical Path, Resources, Budget
 
-### R19 - Plan at two levels: whole-project direction and near-term executable detail
+### R19 - Plan at three levels: overall direction, optional checkpoints, and near-term executable tasks
 - Applies to: solo operator, feedback-heavy, external-constraint, release-safety, agentic
-- Required artifacts: roadmap or execution map, near-term plan, refresh trigger
-- Why it matters: the operator needs direction without pretending to know every later detail.
+- Required artifacts: roadmap or execution map, optional checkpoint map, near-term task queue, refresh trigger
+- Why it matters: the operator needs direction without turning checkpoints into oversized execution units.
 - Failure prevented: either detail paralysis or vague optimism
 - Source anchors: [S05] [S06] [S12]
 
@@ -212,7 +219,7 @@ This document is the master rulebook bundled with the `software-project-manageme
 
 ### R25 - Start work only when the inputs are ready enough to succeed
 - Applies to: solo operator, feedback-heavy, external-constraint, release-safety, agentic
-- Required artifacts: definition of ready, dependency clearance, input package
+- Required artifacts: definition of ready, dependency clearance, input package, task-sized boundary
 - Why it matters: starting early without inputs creates churn disguised as progress.
 - Failure prevented: blocked execution and repeated clarification loops
 - Source anchors: [S03] [S09] [S17]
@@ -357,7 +364,7 @@ This document is the master rulebook bundled with the `software-project-manageme
 
 ### R44 - Store durable task state in files, not only in chat
 - Applies to: agentic, solo operator, feedback-heavy, external-constraint, release-safety
-- Required artifacts: execution plan, progress log, decision log, evidence log
+- Required artifacts: execution plan, ordered task queue, progress log, decision log, evidence log
 - Why it matters: chat context is transient; files survive sessions and model changes.
 - Failure prevented: context-window dependence and task amnesia
 - Source anchors: [S17] [S18] [S23]
@@ -376,11 +383,11 @@ This document is the master rulebook bundled with the `software-project-manageme
 - Failure prevented: hallucinated structure and repeated rediscovery
 - Source anchors: [S17] [S18]
 
-### R47 - Make every autonomous task acceptance-driven
+### R47 - Make every autonomous task acceptance-driven and short enough to inspect
 - Applies to: agentic, solo operator
-- Required artifacts: acceptance criteria, exact commands, success condition, escalation rule
-- Why it matters: agents need explicit checks before they act.
-- Failure prevented: plausible-looking but unverifiable work
+- Required artifacts: acceptance criteria, exact commands, success condition, explicit stop condition, escalation rule
+- Why it matters: agents need clear checks and size boundaries before they act.
+- Failure prevented: plausible-looking but unverifiable work and long opaque runs
 - Source anchors: [S16] [S17]
 
 ### R48 - Route work to the smallest model that can do it reliably
@@ -471,6 +478,7 @@ This document is the master rulebook bundled with the `software-project-manageme
 | Source-of-truth index | Keeps project state discoverable |
 | Scope and exclusions | Prevents silent scope creep |
 | Work breakdown or backlog | Decomposes total work |
+| Task queue or execution queue | Defines the next small executable units |
 | Dependency map or sequence | Makes blockers visible |
 | Current-state note or execution plan | Preserves continuity across sessions |
 | Risk register | Tracks threats and mitigations |
@@ -489,7 +497,7 @@ This document is the master rulebook bundled with the `software-project-manageme
 
 | Mode | When to use it | What to add |
 | --- | --- | --- |
-| Solo operator default | One operator runs the project through LLMs or subagents with no hard outside gate | Scope, decomposition, dependencies, acceptance, durable files, tests or evals, guardrails |
+| Solo operator default | One operator runs the project through LLMs or subagents with no hard outside gate | Scope, decomposition, small task queue, dependencies, acceptance, durable files, tests or evals, guardrails |
 | Feedback-heavy | User learning or UX uncertainty dominates | Research questions, findings log, scope-refresh loop |
 | External-constraint | Fixed date, approval gate, vendor dependency, quota cap, or launch window exists | Constraint log, minimal critical path, explicit gate evidence, fallback assumptions |
 | Release-safety | Real software will be deployed or handed to users | Release checklist, rollback plan, monitoring checks, operating notes |
@@ -501,7 +509,7 @@ This document is the master rulebook bundled with the `software-project-manageme
 | --- | --- |
 | Prerequisites for a software project | R05-R08 |
 | Stages of a software project | R12, R25-R27, R42-R43 |
-| How to plan the work | R17, R19-R24 |
+| How to plan the work | R04A, R17, R19-R24 |
 | How to map dependencies | R20 |
 | How to hand off work and artifacts | R26-R27, R54 |
 | How to map a critical path | R21 |
@@ -515,7 +523,7 @@ This document is the master rulebook bundled with the `software-project-manageme
 | How to mitigate risks | R29-R32 |
 | How to control quality | R33-R36 |
 | How to address scope changes | R32 |
-| What processes ensure project success | R01-R15, R28-R32 |
+| What processes ensure project success | R01-R15, R28-R32, R47 |
 | How to include learning loops for process improvement | R31, R39, R43, R51 |
 | How to include feedback loops to refine scope | R31-R32, R38-R39 |
 | How to include user testing to improve quality | R37 |

@@ -7,6 +7,7 @@ This document synthesizes recent practices for running software delivery with co
 - Core Operating Model
 - Files as Durable Memory
 - Task Storage Outside the Context Window
+- Task Granularity and Stop Points
 - Helping Models Understand a Codebase
 - Interoperability Between Different Models
 - Choosing Models to Save Tokens
@@ -62,6 +63,22 @@ This document synthesizes recent practices for running software delivery with co
   - surprises or discoveries
   - next actions
 - This reduces context-window dependence and makes cross-model or cross-session continuation possible. [S17] [S23]
+
+## Task Granularity and Stop Points
+- Use milestones, themes, or checkpoints to group work, not as the next execution unit.
+- Prefer tasks that can usually finish in one focused run and produce one reviewable diff or artifact.
+- A good execution task names:
+  - one primary outcome
+  - exact files or modules in scope
+  - dependencies or prerequisites
+  - acceptance command or check
+  - explicit stop point
+- Split a task before execution if it:
+  - spans multiple subsystems
+  - requires several independent validations
+  - produces a large opaque diff
+  - would leave the operator unsure what changed
+- After each task, update the task file or current-state note and pick the next task from the queue. [S17] [S18] [S23] [S25]
 
 ## Helping Models Understand a Codebase
 - Agent comprehension improves when the codebase is legible:
@@ -178,6 +195,7 @@ This document synthesizes recent practices for running software delivery with co
   - files or modules in scope
   - acceptance tests
   - environment commands
+  - explicit stop condition
   - escalation conditions
   - guardrails for risky actions
 - If any of those are missing, the agent will substitute guesses. That may be acceptable for low-risk tasks but becomes dangerous for large or cross-cutting work. [S17] [S18]
