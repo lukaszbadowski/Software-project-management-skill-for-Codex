@@ -7,7 +7,7 @@ description: Structure software projects run by a single human operator using LL
 
 ## Overview
 
-Use this skill to turn vague AI-assisted delivery work into a controlled execution system for one human operator. Default to objective, scope, small executable tasks, acceptance, dependency sequencing, durable files, tests or evals, risk or change logs, and permissions. Add deadline, approval, vendor, budget, or release-window controls only when the project actually has those external constraints.
+Use this skill to turn vague AI-assisted delivery work into a controlled execution system for one human operator. Default to objective, scope, small executable tasks with stable IDs, acceptance, dependency sequencing, durable files, tests or evals, risk or change logs, and permissions. Add deadline, approval, vendor, budget, or release-window controls only when the project actually has those external constraints.
 
 ## Quick Start
 
@@ -39,7 +39,7 @@ Always maintain these artifacts in some form:
 - operator decision record
 - source-of-truth index
 - scoped work breakdown or backlog
-- small task queue for the next executable units
+- small task queue with stable task IDs for the next executable units
 - acceptance and quality criteria
 - dependency map or dependency sequence
 - durable execution plan or current-state note
@@ -57,8 +57,11 @@ Add these artifacts when needed:
 
 - Use milestones, themes, or phases only to group work. Do not use them as the next action.
 - Default to a task queue where each task is small enough for one focused agent run and one quick operator review.
+- Assign a unique stable task ID when a task enters the queue. Keep the ID stable even if the task title or wording changes.
 - Make each task narrow in scope: one subsystem, interface, document, or test surface when possible.
 - Give every task an explicit stop point, file or module scope, dependency or precondition, and acceptance check.
+- If a task is split, keep the original task ID in the history and assign new child IDs to the new tasks. If a task is replaced, mark it as superseded rather than silently renaming it away.
+- Refer to active work, progress notes, evidence, and handoffs by task ID as well as by human-readable title.
 - If a task would touch many unrelated areas or require a long uninterrupted run, split it before execution.
 - After each completed task, update the current-state note, record evidence, and choose the next task.
 
@@ -90,7 +93,7 @@ Add these artifacts when needed:
 ## Common Deliverables
 
 - operator project plan
-- micro-task backlog or execution queue
+- micro-task backlog or execution queue with stable task IDs
 - project rescue assessment
 - artifact checklist tailored to lifecycle
 - dependency and sequencing analysis
@@ -113,7 +116,8 @@ Add these artifacts when needed:
 - Make assumptions explicit whenever the workspace does not contain enough project context.
 - Distinguish stable control practices from volatile vendor recommendations.
 - Prefer task queues over milestone-only plans.
-- Default task format: `Task`, `Scope`, `Depends on`, `Done when`, and `Stop after`.
+- Default task format: `Task ID`, `Task`, `Scope`, `Depends on`, `Done when`, and `Stop after`.
+- When reporting progress or selecting next work, reference the task ID first.
 - When in doubt, split work into smaller tasks before execution.
 - Do not introduce date plans, budget tracking, approval workflows, recurring cadences, or stage gates unless the project genuinely depends on them.
 - If the user asks for the latest model, benchmark, or vendor workflow guidance, verify it externally before answering because the bundled source anchors are point-in-time snapshots.

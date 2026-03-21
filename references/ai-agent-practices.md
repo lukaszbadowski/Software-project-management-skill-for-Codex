@@ -53,6 +53,7 @@ This document synthesizes recent practices for running software delivery with co
 ## Task Storage Outside the Context Window
 - Long-horizon tasks should have an explicit plan file, not only a chat history. [S17]
 - A good task file contains:
+  - task ID
   - problem statement
   - assumptions
   - constraints and non-goals
@@ -68,11 +69,14 @@ This document synthesizes recent practices for running software delivery with co
 - Use milestones, themes, or checkpoints to group work, not as the next execution unit.
 - Prefer tasks that can usually finish in one focused run and produce one reviewable diff or artifact.
 - A good execution task names:
+  - task ID
   - one primary outcome
   - exact files or modules in scope
   - dependencies or prerequisites
   - acceptance command or check
   - explicit stop point
+- Keep task IDs stable across title edits and scope clarifications.
+- If a task splits, keep the original task ID in history and assign new IDs to the child tasks instead of recycling names.
 - Split a task before execution if it:
   - spans multiple subsystems
   - requires several independent validations
@@ -117,6 +121,7 @@ This document synthesizes recent practices for running software delivery with co
   - test commands
   - escalation rules
 - A reliable cross-model handoff template should also include:
+  - current task ID
   - current state and what changed
   - commands already run and results
   - unresolved questions
@@ -190,6 +195,7 @@ This document synthesizes recent practices for running software delivery with co
 
 ## Preparing Work for Autonomous Agent Execution
 - A task is autonomy-ready when it includes:
+  - task ID
   - goal and user or business outcome
   - constraints and non-goals
   - files or modules in scope

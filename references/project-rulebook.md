@@ -65,6 +65,13 @@ This document is the master rulebook bundled with the `software-project-manageme
 - Failure prevented: long opaque runs, oversized diffs, weak operator visibility, and poor recovery after interruption
 - Source anchors: [S07] [S17] [S18] [S23]
 
+### R04B - Give every execution task a stable identifier
+- Applies to: solo operator, feedback-heavy, external-constraint, release-safety, agentic
+- Required artifacts: ordered task queue with stable task IDs, superseded or split-task history where relevant
+- Why it matters: task titles change as understanding improves, but the operator still needs a stable handle for progress, review, and handoff.
+- Failure prevented: losing track of what was worked on, ambiguous status updates, and broken continuity after task renames
+- Source anchors: [S17] [S18] [S23]
+
 ## Project Prerequisites and Readiness Checks
 
 ### R05 - Do not start without a success definition and authority to proceed
@@ -99,7 +106,7 @@ This document is the master rulebook bundled with the `software-project-manageme
 
 ### R09 - Default to the solo-operator control mode
 - Applies to: solo operator, agentic
-- Required artifacts: objective, work breakdown, small task queue, acceptance criteria, dependency sequence, durable current-state note
+- Required artifacts: objective, work breakdown, small task queue with stable IDs, acceptance criteria, dependency sequence, durable current-state note
 - Why it matters: most LLM-run work does not need extra ceremony.
 - Failure prevented: bloated process and unnecessary management artifacts
 - Source anchors: [S01] [S04] [S17]
@@ -159,7 +166,7 @@ This document is the master rulebook bundled with the `software-project-manageme
 
 ### R17 - Maintain a controlled decomposition of total work
 - Applies to: solo operator, feedback-heavy, external-constraint, release-safety, agentic
-- Required artifacts: work breakdown or backlog, ordered task queue, dependency markers, current priority
+- Required artifacts: work breakdown or backlog, ordered task queue with stable IDs, dependency markers, current priority
 - Why it matters: decomposition is the basis for sequencing, estimation, and handoff safety.
 - Failure prevented: missing work, duplicate work, and vague execution
 - Source anchors: [S07] [S09]
@@ -175,7 +182,7 @@ This document is the master rulebook bundled with the `software-project-manageme
 
 ### R19 - Plan at three levels: overall direction, optional checkpoints, and near-term executable tasks
 - Applies to: solo operator, feedback-heavy, external-constraint, release-safety, agentic
-- Required artifacts: roadmap or execution map, optional checkpoint map, near-term task queue, refresh trigger
+- Required artifacts: roadmap or execution map, optional checkpoint map, near-term task queue with stable IDs, refresh trigger
 - Why it matters: the operator needs direction without turning checkpoints into oversized execution units.
 - Failure prevented: either detail paralysis or vague optimism
 - Source anchors: [S05] [S06] [S12]
@@ -226,7 +233,7 @@ This document is the master rulebook bundled with the `software-project-manageme
 
 ### R26 - Hand off artifacts, evidence, and unresolved risks together
 - Applies to: solo operator, feedback-heavy, external-constraint, release-safety, agentic
-- Required artifacts: handoff note, outputs, evidence, open issues and risks
+- Required artifacts: handoff note with task IDs, outputs, evidence, open issues and risks
 - Why it matters: a handoff is only complete when the next run can continue without rediscovery.
 - Failure prevented: dropped context and broken continuity between sessions or models
 - Source anchors: [S05] [S17] [S18] [S23]
@@ -364,7 +371,7 @@ This document is the master rulebook bundled with the `software-project-manageme
 
 ### R44 - Store durable task state in files, not only in chat
 - Applies to: agentic, solo operator, feedback-heavy, external-constraint, release-safety
-- Required artifacts: execution plan, ordered task queue, progress log, decision log, evidence log
+- Required artifacts: execution plan, ordered task queue with stable IDs, progress log, decision log, evidence log
 - Why it matters: chat context is transient; files survive sessions and model changes.
 - Failure prevented: context-window dependence and task amnesia
 - Source anchors: [S17] [S18] [S23]
@@ -385,7 +392,7 @@ This document is the master rulebook bundled with the `software-project-manageme
 
 ### R47 - Make every autonomous task acceptance-driven and short enough to inspect
 - Applies to: agentic, solo operator
-- Required artifacts: acceptance criteria, exact commands, success condition, explicit stop condition, escalation rule
+- Required artifacts: task ID, acceptance criteria, exact commands, success condition, explicit stop condition, escalation rule
 - Why it matters: agents need clear checks and size boundaries before they act.
 - Failure prevented: plausible-looking but unverifiable work and long opaque runs
 - Source anchors: [S16] [S17]
@@ -434,7 +441,7 @@ This document is the master rulebook bundled with the `software-project-manageme
 
 ### R54 - Use vendor-neutral handoff artifacts for cross-model interoperability
 - Applies to: agentic, solo operator
-- Required artifacts: task brief, current-state summary, exact file list, commands run, expected next action
+- Required artifacts: task brief, current task ID, current-state summary, exact file list, commands run, expected next action
 - Why it matters: multi-model continuation only works when state is explicit and portable.
 - Failure prevented: hidden-context handoffs and model-specific dead ends
 - Source anchors: [S17] [S18] [S23]
@@ -478,7 +485,7 @@ This document is the master rulebook bundled with the `software-project-manageme
 | Source-of-truth index | Keeps project state discoverable |
 | Scope and exclusions | Prevents silent scope creep |
 | Work breakdown or backlog | Decomposes total work |
-| Task queue or execution queue | Defines the next small executable units |
+| Task queue or execution queue with stable IDs | Defines the next small executable units and keeps them traceable through renames |
 | Dependency map or sequence | Makes blockers visible |
 | Current-state note or execution plan | Preserves continuity across sessions |
 | Risk register | Tracks threats and mitigations |
@@ -497,7 +504,7 @@ This document is the master rulebook bundled with the `software-project-manageme
 
 | Mode | When to use it | What to add |
 | --- | --- | --- |
-| Solo operator default | One operator runs the project through LLMs or subagents with no hard outside gate | Scope, decomposition, small task queue, dependencies, acceptance, durable files, tests or evals, guardrails |
+| Solo operator default | One operator runs the project through LLMs or subagents with no hard outside gate | Scope, decomposition, small task queue with stable IDs, dependencies, acceptance, durable files, tests or evals, guardrails |
 | Feedback-heavy | User learning or UX uncertainty dominates | Research questions, findings log, scope-refresh loop |
 | External-constraint | Fixed date, approval gate, vendor dependency, quota cap, or launch window exists | Constraint log, minimal critical path, explicit gate evidence, fallback assumptions |
 | Release-safety | Real software will be deployed or handed to users | Release checklist, rollback plan, monitoring checks, operating notes |
