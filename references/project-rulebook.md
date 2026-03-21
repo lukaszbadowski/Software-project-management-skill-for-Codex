@@ -17,13 +17,14 @@ This document is the master rulebook bundled with the `software-project-manageme
 - Documentation System and Living Documentation
 - Release, Operational Readiness, Support Handoff, and Closure
 - AI-Agent Operating Rules
-- Recent 2025-2026 Developments and Unknown Unknowns
+- Recent Vendor and Benchmark Shifts
 - Appendix A - Artifact Checklist
 - Appendix B - Delivery-Mode Mapping
 - Appendix C - Question Coverage Map
 
 ## Purpose and How to Use This Document
 - Use this file as a rulebook for running software projects across predictive, agile, hybrid, and agent-assisted modes.
+- For pure LLM-run projects, default to rules about scope, acceptance, dependencies, durable files, tests or evals, and permissions. Add schedules, budgets, staffing, and stakeholder-reporting controls only when external human constraints make them necessary.
 - Treat the rules as a control system, not as ceremony. The goal is reliable value delivery under real constraints.
 - Tailor the amount of upfront detail to uncertainty, but do not remove the underlying controls for ownership, scope, quality, risk, change, documentation, and feedback. [S03] [S05] [S06]
 
@@ -59,25 +60,25 @@ This document is the master rulebook bundled with the `software-project-manageme
 
 ## Project Prerequisites and Readiness Checks
 
-### R05 - Do not start without a real mandate, budget authority, and success definition
+### R05 - Do not start without execution authority and success definition
 - Applies to: predictive, agile, hybrid, agentic
-- Required artifacts: charter or mandate, sponsor, budget/time authorization, success criteria
-- Why it matters: projects need explicit authority and a stop-or-go basis.
+- Required artifacts: charter or mandate, decision owner, success criteria, and budget or time authorization only when external control systems require them
+- Why it matters: projects need explicit authority and a stop-or-go basis even when there is no formal budget or date gate.
 - Failure prevented: shadow projects, orphan work, endless initiation
 - Source anchors: [S04] [S05] [S11]
 
 ### R06 - Surface constraints early, especially the ones teams forget
 - Applies to: predictive, agile, hybrid, agentic
-- Required artifacts: constraint log covering compliance, NFRs, architecture, procurement, environments, support, release windows
+- Required artifacts: constraint log covering compliance, NFRs, architecture, environments, permissions, support, release windows, token or compute ceilings, and procurement where relevant
 - Why it matters: software slips are often caused by hidden constraints rather than code volume.
 - Failure prevented: late surprises in security, infrastructure, legal, support, or performance
 - Source anchors: [S04] [S10] [S11]
 
-### R07 - Staff by required capabilities, not by generic headcount
+### R07 - Plan scarce resources only when they are true constraints
 - Applies to: predictive, agile, hybrid, agentic
-- Required artifacts: capability map, staffing plan, acquisition plan for missing skills
-- Why it matters: the schedule is constrained by bottleneck skills and decisions, not by total people.
-- Failure prevented: false confidence from oversized but unbalanced teams
+- Required artifacts: bottleneck map, capacity or quota plan, review-bandwidth plan, and acquisition plan only when missing human capabilities matter
+- Why it matters: LLM-run projects are often constrained by CI capacity, model quotas, permissions, or review bandwidth rather than by headcount.
+- Failure prevented: false confidence from ignoring the real bottlenecks
 - Source anchors: [S03] [S04] [S11]
 
 ### R08 - Prepare environments, data, and access as first-class project work
@@ -89,16 +90,16 @@ This document is the master rulebook bundled with the `software-project-manageme
 
 ## Lifecycle Selection and Tailoring Rules
 
-### R09 - Use predictive controls when the work is definable and change is expensive
+### R09 - Use predictive controls when external commitments are fixed and change is expensive
 - Applies to: predictive, hybrid
-- Required artifacts: baseline scope, baseline schedule, baseline budget, formal change path
-- Why it matters: date-driven and approval-heavy work needs firmer upfront control.
+- Required artifacts: baseline scope, formal change path, and baseline schedule or budget only when those commitments are externally fixed
+- Why it matters: approval-heavy or externally committed work needs firmer upfront control.
 - Failure prevented: pretending uncertainty is low while managing loosely
 - Source anchors: [S05] [S08] [S11]
 
 ### R10 - Use agile controls when uncertainty and learning dominate
 - Applies to: agile, hybrid
-- Required artifacts: product goal, prioritized backlog, sprint or iteration cadence, review and retrospective cadence
+- Required artifacts: product goal, prioritized backlog, short inspect-adapt loop, and review and retrospective triggers
 - Why it matters: complex work benefits from frequent inspection and adaptation.
 - Failure prevented: locking detail too early, learning too slowly, delayed user feedback
 - Source anchors: [S02] [S03] [S06] [S13]
@@ -121,15 +122,15 @@ This document is the master rulebook bundled with the `software-project-manageme
 
 ### R13 - Govern by cadence and evidence, not by status theater
 - Applies to: predictive, agile, hybrid, agentic
-- Required artifacts: governance cadence, standard evidence pack, decision log
+- Required artifacts: governance trigger or cadence, standard evidence pack, decision log
 - Why it matters: governance should improve decisions, not tax the team.
 - Failure prevented: reporting overhead with no control benefit
 - Source anchors: [S05] [S13]
 
-### R14 - Define stage or milestone exit criteria before the work reaches them
+### R14 - Define exit criteria before any stage gate or milestone handoff
 - Applies to: predictive, agile, hybrid, agentic
 - Required artifacts: exit criteria, approvers, evidence requirements
-- Why it matters: stage transitions are where ambiguity and wishful thinking tend to concentrate.
+- Why it matters: whenever gated transitions exist, they are where ambiguity and wishful thinking tend to concentrate.
 - Failure prevented: late gate failures, rushed approvals, handoff chaos
 - Source anchors: [S05] [S11]
 
@@ -160,49 +161,49 @@ This document is the master rulebook bundled with the `software-project-manageme
 
 ### R18 - Plan at two levels: whole-project direction and near-term executable detail
 - Applies to: predictive, agile, hybrid, agentic
-- Required artifacts: roadmap or master schedule, near-term delivery plan, refresh cadence
+- Required artifacts: roadmap or execution map, near-term delivery plan, refresh trigger
 - Why it matters: teams need both strategic direction and tactical clarity.
 - Failure prevented: either detail paralysis or vague optimism
 - Source anchors: [S05] [S06] [S08] [S13]
 
 ### R19 - Map dependencies explicitly, including non-code dependencies
 - Applies to: predictive, agile, hybrid, agentic
-- Required artifacts: dependency map, dependency owners, due dates, escalation path
+- Required artifacts: dependency map, dependency owners, sequencing constraints, and escalation path
 - Why it matters: cross-team, vendor, environment, and approval dependencies often dominate delivery risk.
 - Failure prevented: blocked work and false confidence from local task completion
 - Source anchors: [S05] [S08] [S11]
 
-### R20 - Calculate and monitor a critical path whenever dates matter
+### R20 - Calculate and monitor a critical path only when timing or scarce approvals truly matter
 - Applies to: predictive, hybrid, agentic
-- Required artifacts: schedule model, activity logic, duration assumptions, critical-path review cadence
-- Why it matters: date commitments are managed through dependency logic, not hope.
-- Failure prevented: missing the true schedule drivers and misusing slack
+- Required artifacts: sequence model, activity logic, duration or latency assumptions, and critical-path review trigger
+- Why it matters: not every LLM-run project needs date math, but externally timed or approval-heavy work does.
+- Failure prevented: missing the true sequencing drivers and misusing slack
 - Source anchors: [S08]
 
 ### R21 - Estimate with explicit assumptions and confidence, not single-number certainty
 - Applies to: predictive, agile, hybrid, agentic
-- Required artifacts: estimate basis, assumptions, ranges or confidence note, refresh date
+- Required artifacts: estimate basis, assumptions, ranges or confidence note, refresh trigger
 - Why it matters: most software estimates fail because assumptions remain implicit.
 - Failure prevented: pseudo-precision and untracked estimate drift
 - Source anchors: [S04] [S08]
 
-### R22 - Plan resources against bottlenecks and sustainable pace
+### R22 - Plan scarce resources against real bottlenecks, not generic headcount
 - Applies to: predictive, agile, hybrid, agentic
-- Required artifacts: capacity plan, bottleneck analysis, pacing assumption
-- Why it matters: throughput collapses when scarce capabilities or exhausted teams become the real constraint.
+- Required artifacts: capacity or quota plan, bottleneck analysis, pacing assumption, and review-bandwidth plan when humans remain in the loop
+- Why it matters: throughput collapses when scarce tools, quotas, approvals, or exhausted teams become the real constraint.
 - Failure prevented: heroic plans that fail in execution
 - Source anchors: [S03] [S04]
 
-### R23 - Budget for overhead, risk, and transition, not only build effort
+### R23 - Budget for overhead, risk, and transition only when spend or quota limits matter
 - Applies to: predictive, agile, hybrid, agentic
-- Required artifacts: budget model, contingency, reserve policy, transition cost line items
-- Why it matters: real project cost includes planning, testing, documentation, release, training, and support handoff.
-- Failure prevented: budget blowouts caused by undercounted non-build work
+- Required artifacts: budget or quota model, contingency or reserve policy where relevant, transition cost line items
+- Why it matters: external spend, token budgets, and shared-tool quotas can still matter, but they are not universal controls.
+- Failure prevented: runaway spend, hidden quota limits, and undercounted transition work
 - Source anchors: [S04] [S05] [S10]
 
-### R24 - Reforecast continuously when reality changes
+### R24 - Refresh commitments when reality changes
 - Applies to: predictive, agile, hybrid, agentic
-- Required artifacts: forecast refresh cadence, variance log, recovery options
+- Required artifacts: forecast or replanning trigger, variance log, recovery options
 - Why it matters: a stale plan is worse than no plan because it creates false confidence.
 - Failure prevented: late surprise slippage and unmanaged cost drift
 - Source anchors: [S05] [S13]
@@ -213,7 +214,7 @@ This document is the master rulebook bundled with the `software-project-manageme
 - Applies to: predictive, agile, hybrid, agentic
 - Required artifacts: definition of ready, dependency clearance, input package
 - Why it matters: work started without ready inputs becomes churn disguised as progress.
-- Failure prevented: blocked sprints, context loss, repeated clarification loops
+- Failure prevented: blocked work cycles, context loss, repeated clarification loops
 - Source anchors: [S03] [S09] [S18]
 
 ### R26 - Hand off artifacts, evidence, and unresolved risks together
@@ -226,7 +227,7 @@ This document is the master rulebook bundled with the `software-project-manageme
 ### R27 - Track cross-team and stage-transition work as deliverables, not side conversations
 - Applies to: predictive, agile, hybrid, agentic
 - Required artifacts: transition checklist, dependency actions, owner list
-- Why it matters: integration and transition work is real project work with real schedule cost.
+- Why it matters: integration and transition work is real project work with real execution cost.
 - Failure prevented: "almost done" projects that fail at release or handoff
 - Source anchors: [S11] [S13]
 
@@ -234,7 +235,7 @@ This document is the master rulebook bundled with the `software-project-manageme
 
 ### R28 - Measure progress through completed evidence, not reported effort
 - Applies to: predictive, agile, hybrid, agentic
-- Required artifacts: milestone evidence, increment evidence, status dashboard
+- Required artifacts: deliverable evidence, increment evidence, status dashboard or current-state note
 - Why it matters: progress should reflect outputs that are inspectable and usable.
 - Failure prevented: percent-complete illusions and optimistic reporting
 - Source anchors: [S03] [S05] [S13]
@@ -253,9 +254,9 @@ This document is the master rulebook bundled with the `software-project-manageme
 - Failure prevented: vague risk lists with no usable response path
 - Source anchors: [S10] [S11]
 
-### R30 - Inspect and adapt on a fixed cadence
+### R30 - Inspect and adapt on a fixed cadence or explicit trigger
 - Applies to: predictive, agile, hybrid, agentic
-- Required artifacts: review cadence, retrospective cadence, action list
+- Required artifacts: review trigger, retrospective trigger, action list
 - Why it matters: problems worsen when learning is ad hoc rather than scheduled.
 - Failure prevented: late detection of drift, repeated process mistakes
 - Source anchors: [S02] [S03] [S05]
@@ -347,7 +348,7 @@ This document is the master rulebook bundled with the `software-project-manageme
 
 ### R41 - Hand off to operations and support with explicit ownership and evidence
 - Applies to: predictive, agile, hybrid, agentic
-- Required artifacts: runbooks, support contacts, known issues, monitoring thresholds, training materials
+- Required artifacts: runbooks, support contacts, known issues, monitoring thresholds, usage notes or training materials where relevant
 - Why it matters: operational success requires more than shipping code.
 - Failure prevented: post-release confusion and slow incident response
 - Source anchors: [S05] [S11] [S13]
@@ -445,7 +446,7 @@ This document is the master rulebook bundled with the `software-project-manageme
 - Failure prevented: prompt-injection-driven actions, secret exposure, and unsafe automated execution
 - Source anchors: [S19] [S25]
 
-## Recent 2025-2026 Developments and Unknown Unknowns
+## Recent Vendor and Benchmark Shifts
 
 ### R53 - Assume benchmark claims are provisional until reproduced on your own tasks
 - Applies to: agentic, hybrid
@@ -454,9 +455,9 @@ This document is the master rulebook bundled with the `software-project-manageme
 - Failure prevented: overtrusting leaderboard gains that do not transfer to production tasks
 - Source anchors: [S22] [S23]
 
-### R54 - Assume models, costs, and capabilities will drift; revalidate routing and prompts regularly
+### R54 - Assume models, costs, and capabilities will drift; revalidate routing and prompts when conditions change
 - Applies to: agentic, hybrid
-- Required artifacts: review cadence for model routing, prompt/eval refresh
+- Required artifacts: revalidation trigger for model routing, prompt/eval refresh
 - Why it matters: model aliases, snapshots, and reasoning tradeoffs change over time.
 - Failure prevented: stale optimization choices and degraded reliability
 - Source anchors: [S20] [S21]
@@ -468,7 +469,7 @@ This document is the master rulebook bundled with the `software-project-manageme
 - Failure prevented: blaming the tool for systemic planning, governance, or quality failures
 - Source anchors: [S14] [S15]
 
-### R56 - Treat human attention as a scarce resource and design the delivery system around it
+### R56 - Treat review and approval bandwidth as a scarce resource and design the delivery system around it
 - Applies to: predictive, agile, hybrid, agentic
 - Required artifacts: review strategy, automation strategy, escalation policy
 - Why it matters: in modern delivery, the true critical path is often decision and review capacity.
@@ -485,9 +486,9 @@ This document is the master rulebook bundled with the `software-project-manageme
 | Scope and exclusion statement | Prevents silent scope creep |
 | WBS or backlog | Decomposes total work |
 | Dependency map | Makes critical blockers visible |
-| Schedule or roadmap | Connects work to time |
-| Capacity and staffing plan | Aligns work to real capability |
-| Budget model and reserve | Connects work to cost |
+| Schedule or roadmap | Connects work to time when external timing matters |
+| Capacity, staffing, or quota plan | Aligns work to real bottlenecks when constrained |
+| Budget model and reserve | Connects work to spend or quota limits when relevant |
 | Risk register | Tracks threats and opportunities |
 | Issue log | Tracks active problems |
 | Change log | Governs scope and plan changes |
@@ -507,7 +508,7 @@ This document is the master rulebook bundled with the `software-project-manageme
 
 | Mode | What stays fixed | What stays flexible | Typical control mechanism |
 | --- | --- | --- | --- |
-| Predictive | Scope, schedule, budget baselines | Local execution details | Formal planning and change control |
+| Predictive | Scope and externally committed constraints | Local execution details | Formal planning and change control |
 | Agile | Outcome intent and quality bar | Scope detail and sequencing | Backlog management plus inspect/adapt cadence |
 | Hybrid | Governance, major milestones, key constraints | Near-term implementation detail | Rolling-wave planning and mixed controls |
 | Agentic | Outcome, guardrails, acceptance, permissions | Internal execution path | File-backed plans, tool constraints, tests, evals |

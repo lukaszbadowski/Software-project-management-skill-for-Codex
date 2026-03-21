@@ -1,63 +1,65 @@
 ---
 name: software-project-management
-description: Run software projects with predictive, agile, hybrid, and agent-assisted discipline. Use when Codex needs to plan, govern, rescue, or structure software delivery; choose a lifecycle; define scope, dependencies, critical path, resources, budget, risk, quality, user-testing loops, documentation, release readiness, or agent operating rules.
+description: Run LLM-first and hybrid software projects with clear scope, dependencies, tests, durable files, and guardrails. Use when Codex needs to plan, govern, rescue, or structure software delivery driven by models or subagents; choose which human-project controls are actually necessary; define scope, acceptance, dependencies, documentation, release readiness, evals, and agent operating rules.
 ---
 
 # Software Project Management
 
 ## Overview
 
-Use this skill to turn vague software delivery work into a controlled project system. Build or repair the project operating model: lifecycle choice, source of truth, scope, dependencies, quality controls, feedback loops, and agent-specific guardrails.
+Use this skill to turn vague AI-assisted delivery work into a controlled execution system. Default to scope, acceptance, dependency sequencing, durable files, tests or evals, and permissions; add calendars, budgets, staffing, and stakeholder rituals only when external human constraints require them.
 
 ## Quick Start
 
 1. Inspect the workspace for existing project artifacts before inventing new ones.
-2. Classify the work as predictive, agile, hybrid, or agent-assisted.
-3. Create or repair the minimum control system: owner, scope, acceptance, plan, dependencies, risk/change controls, documentation, and release/support readiness.
+2. Classify the work as agentic-first, hybrid, or human-coordinated.
+3. Create or repair the minimum control system: owner, scope, acceptance, work plan, dependencies, risk/change controls, documentation, and guardrails.
 4. Produce the lightest artifact set that still preserves control.
 
 ## Workflow
 
 ### Build Context First
 
-- Extract the real objective, stakeholders, users, constraints, deadline, dependency landscape, quality bar, and release expectations.
-- Look for an existing charter, roadmap, backlog, design docs, ADRs, test strategy, release plan, runbooks, risk log, and agent rule files.
+- Extract the real objective, users, constraints, dependency landscape, acceptance bar, and release expectations. Only treat deadlines, budgets, staffing, or stakeholder rituals as first-class inputs if the project actually has them.
+- Look for an existing task brief, roadmap or execution plan, backlog, design docs, ADRs, test strategy, release plan, runbooks, risk log, and agent rule files.
 - If important information is missing, make reasonable assumptions and record them explicitly.
-- If the request is to rescue a project, diagnose the control system before proposing fixes: owner clarity, scope quality, dependency visibility, schedule realism, risk hygiene, quality controls, and release/support readiness.
+- If the request is to rescue a project, diagnose the control system before proposing fixes: owner clarity, scope quality, dependency visibility, acceptance quality, risk hygiene, context legibility, tool permissions, and release or support readiness where relevant.
 
 ### Choose the Delivery Mode
 
-- Use predictive controls when scope is definable, approvals are heavy, dates are fixed, or late change is expensive.
-- Use agile controls when learning and user feedback dominate.
-- Use hybrid controls when governance and milestones are fixed but solution detail must evolve.
-- Add agent-assisted controls whenever models or subagents will perform material delivery work.
+- Default to agent-assisted controls when models or subagents perform most of the execution.
+- Use predictive controls only when external approvals, release windows, budgets, or fixed commitments are real constraints.
+- Use agile controls when learning and user feedback dominate and there is still meaningful human coordination around the work.
+- Use hybrid controls when external interfaces are fixed but the solution detail must evolve.
 
 ### Create or Repair the Core Artifact Set
 
 Always maintain these artifacts in some form:
 - objective and success criteria
-- named accountable owner and decision rights
+- named accountable owner or explicit decision path
 - source-of-truth index
 - scoped work breakdown or backlog
 - acceptance and quality criteria
 - dependency map
+- durable execution plan or current-state note
 - risk, issue, and change controls
+- permission and trust-boundary rules
 - documentation freshness path
-- release, rollback, and support-handoff plan
 
 Add these artifacts when needed:
 - Predictive: baseline schedule, budget, milestone exits, formal change path, critical-path analysis
-- Agile: product goal, prioritized backlog, sprint cadence, review cadence, retrospective cadence
-- Agent-assisted: durable execution plan, agent instruction entry point, model/task routing, evals, permission rules, trust-boundary rules
+- Human-coordinated agile: product goal, prioritized backlog, inspect/adapt cadence, review cadence, retrospective cadence
+- Agent-assisted: agent instruction entry point, model or task routing, evals, and explicit escalation rules
+- Production delivery: release, rollback, and support-handoff plan
 
 ### Plan and Govern the Work
 
-- Plan at two levels: whole-project direction and near-term executable detail.
+- Plan at two levels: whole-project direction and near-term executable detail. Only add long-range calendar plans when external commitments require them.
 - Map dependencies explicitly, including approvals, vendors, environments, data, and cross-team work.
-- Calculate and monitor a critical path whenever dates matter.
-- Plan resources against bottlenecks and sustainable pace, not only headcount.
+- Calculate and monitor a critical path only when external deadlines, approvals, or scarce shared bottlenecks make it useful.
+- Plan scarce resources only when they constrain throughput: review bandwidth, CI capacity, API quotas, model budget, or human bottlenecks.
 - Treat scope change as a trade-off decision, not as a free addition.
-- Govern by cadence and evidence, not by status theater.
+- Govern by evidence and explicit triggers, using cadence only where it improves control.
 
 ### Control Quality, Value, and Learning
 
@@ -83,13 +85,14 @@ Add these artifacts when needed:
 - dependency and critical-path analysis
 - risk, quality, and release-control plan
 - agentic execution and guardrail plan
+- human-coordination extension, only when external teams or approvals matter
 
 ## Reference Files
 
 - Read [references/project-rulebook.md](./references/project-rulebook.md) for the full rule system and coverage map.
-- Read [references/pm-framework-notes.md](./references/pm-framework-notes.md) when choosing or tailoring predictive, agile, and hybrid controls.
+- Read [references/pm-framework-notes.md](./references/pm-framework-notes.md) only when human coordination, external approvals, fixed calendars, or organizational budgeting matter.
 - Read [references/ai-agent-practices.md](./references/ai-agent-practices.md) when planning file-backed memory, model routing, subagents, evals, and guardrails.
-- Read [references/source-anchors.md](./references/source-anchors.md) when you need provenance, dated anchors, or a refresh point for unstable topics.
+- Read [references/source-anchors.md](./references/source-anchors.md) when you need provenance, volatile vendor anchors, or a refresh point for unstable topics.
 - Do not load every reference by default. Read the smallest relevant file first.
 
 ## Output Standards
@@ -97,5 +100,6 @@ Add these artifacts when needed:
 - Write in imperative form.
 - Prefer concrete artifacts and decision-ready outputs over generic PM advice.
 - Make assumptions explicit whenever the workspace does not contain enough project context.
-- Distinguish stable management practices from date-sensitive AI-vendor recommendations.
-- If the user asks for the latest model, benchmark, or vendor workflow guidance, verify it externally before answering because the bundled source anchors are dated snapshots.
+- Distinguish stable control practices from volatile vendor recommendations.
+- Do not introduce schedules, budgets, staffing plans, stakeholder cadences, or stage gates unless the project genuinely depends on them.
+- If the user asks for the latest model, benchmark, or vendor workflow guidance, verify it externally before answering because the bundled source anchors are point-in-time snapshots.

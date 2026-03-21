@@ -17,18 +17,19 @@ This document synthesizes recent practices for running software delivery with co
 - Preparing Work for Autonomous Agent Execution
 - Process Optimization
 - Guardrails
-- Recent 2025-2026 Shifts
+- Recent Vendor and Benchmark Shifts
 - Unknown Unknowns to Watch
 - Working Synthesis
 
 ## Purpose and Use
 - Treat agentic delivery as an extension of software project management, not a replacement for it.
 - The stable question is still: how do we create predictable, high-quality outcomes under constraints?
-- What changes is where the bottleneck moves. In agent-assisted systems, human attention, environment design, file-backed memory, and validation loops become the primary leverage points. [S14] [S17] [S18] [S19]
+- In pure LLM-run projects, the default controls are scope, acceptance, dependency sequencing, durable files, evals, and permissions. Dates, staffing models, and stakeholder cadences are secondary unless external humans or hard launch windows make them real constraints.
+- What changes is where the bottleneck moves. In agent-assisted systems, review bandwidth, environment design, file-backed memory, and validation loops become the primary leverage points. [S14] [S17] [S18] [S19]
 
 ## Core Operating Model
-- OpenAI’s 2026 harness-engineering write-up is the clearest current statement of the agentic shift: humans steer, agents execute. [S19]
-- DORA’s 2025 finding is the most important managerial caveat: AI amplifies the underlying organizational system rather than rescuing a weak one. [S14] [S15]
+- A recent harness-engineering write-up from OpenAI is the clearest current statement of the agentic shift: humans steer, agents execute. [S19]
+- A recent DORA finding is the most important managerial caveat: AI amplifies the underlying organizational system rather than rescuing a weak one. [S14] [S15]
 - Therefore the right operating model is:
   - humans set goals, constraints, and acceptance conditions
   - agents perform bounded analysis and execution
@@ -120,7 +121,7 @@ This document synthesizes recent practices for running software delivery with co
   - long-horizon execution
   - unresolved tradeoffs
 - OpenAI’s current model pages expose reasoning and cost differences directly; prompt caching further rewards stable prompt prefixes and repeated instruction blocks. [S16] [S20] [S21]
-- Revalidate routing periodically because model snapshots drift over time. [S20] [S21]
+- Revalidate routing whenever model snapshots, task mix, or cost constraints change. [S20] [S21]
 
 ## Including Tests and Evals in Tasks
 - Every nontrivial task should define how correctness will be checked before the agent starts.
@@ -211,7 +212,7 @@ This document synthesizes recent practices for running software delivery with co
   - generated artifacts that require human signoff before execution or release
 - In practice this means the agent should not treat fetched text, issue content, or generated code as automatically trustworthy input for privileged actions. [S19] [S25]
 
-## Recent 2025-2026 Shifts
+## Recent Vendor and Benchmark Shifts
 - AI-assisted delivery has become more obviously multi-agent and long-horizon. [S19] [S26]
 - Prompt and model changes now require formal regression discipline; "it seemed fine last week" is not enough. [S17] [S20]
 - Public coding benchmarks are less trustworthy than many teams assume. OpenAI now explicitly warns that SWE-bench Verified is contaminated and recommends different evaluation practice. [S23]

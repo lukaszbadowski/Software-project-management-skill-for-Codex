@@ -1,6 +1,6 @@
-# Conventional Project Management Notes
+# Conventional Human-Run Project Management Notes
 
-This document synthesizes tried-and-tested software-project practices from predictive, agile, and hybrid delivery. It is a bundled background note for the `software-project-management` skill. Source anchors refer to [source-anchors.md](./source-anchors.md).
+This document synthesizes tried-and-tested software-project practices from predictive, agile, and hybrid delivery. It is a bundled background note for the `software-project-management` skill, not the default playbook for pure LLM-run projects. Source anchors refer to [source-anchors.md](./source-anchors.md).
 
 ## Table of Contents
 - Purpose and Use
@@ -18,7 +18,8 @@ This document synthesizes tried-and-tested software-project practices from predi
 - Working Synthesis
 
 ## Purpose and Use
-- Use this file as the human-project-management half of the final rules document.
+- Use this file only when the project includes meaningful human coordination, fixed calendars, external approvals, budgeting, or non-agent teams.
+- For pure LLM-run projects, start with the master rulebook and the agent-practices reference, then pull from this file selectively.
 - Treat predictive and agile as different control styles for the same job: delivering value under constraints with visible risk, quality, and accountability.
 - Tailor the amount of upfront detail to uncertainty, but do not skip planning, governance, documentation, or quality control. Sources consistently support tailoring, not abandoning controls. [S03] [S04] [S05] [S06]
 
