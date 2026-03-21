@@ -104,6 +104,16 @@ This skill is built around a different balance:
 
 It treats software project management as a control system for AI-assisted execution, not as a pile of rituals.
 
+## What This Skill Will Not Do
+
+This skill is deliberately opinionated about its boundaries.
+
+- It will not act as your software architect. It can help structure architecture work, decisions, and trade-offs, but it does not replace technical design judgment.
+- It will not act as a security enforcer or compliance authority. It can surface risks, checks, and approval points, but it does not certify a system as secure, compliant, or production-safe by itself.
+- It will not invent product strategy, business goals, or success criteria out of thin air. The operator still owns the objective and the trade-offs.
+- It will not replace tests, evals, code review, or human verification. It pushes toward explicit checks, but it does not guarantee correctness.
+- It will not add heavyweight ceremony by default. It does not force stage gates, budget tracking, approval workflows, or deadline mechanics unless those constraints are actually real.
+
 ## Repository Layout
 
 ```text
