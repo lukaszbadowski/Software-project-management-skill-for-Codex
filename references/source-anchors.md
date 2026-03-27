@@ -1,6 +1,6 @@
 # Source Log
 
-Access date for all entries: `2026-03-21`
+Access date for all entries: `2026-03-27`
 
 This log records the primary sources used to build the `software-project-management` skill. Source IDs are referenced from the bundled note files and the master rulebook.
 
@@ -187,6 +187,62 @@ This log records the primary sources used to build the `software-project-managem
 - Why trusted: Official docs on scoped delegation and context isolation.
 - Questions answered: When to use subagents, isolating high-volume output, fresh context, tool scoping.
 - Notes on paywall or uncertainty: Public docs. Feature names are vendor-specific, but the operating pattern generalizes.
+
+### S26 - OpenAI Codex Best Practices
+- Type: Official product docs
+- URL: <https://developers.openai.com/codex/learn/best-practices>
+- Why trusted: Official Codex guidance for effective agentic software development workflows.
+- Questions answered: Plan-first workflows, reusable instructions, testing and review loops, configuration pitfalls, and practical reliability patterns.
+- Notes on paywall or uncertainty: Public docs. Recommendations evolve as Codex features change.
+
+### S27 - OpenAI Custom Instructions with AGENTS.md
+- Type: Official product docs
+- URL: <https://developers.openai.com/codex/guides/agents-md>
+- Why trusted: Official documentation for Codex instruction-file discovery and layering.
+- Questions answered: How to structure reusable instructions, layer repo and directory overrides, and keep instruction files practical.
+- Notes on paywall or uncertainty: Public docs. Filename and config details may evolve.
+
+### S28 - OpenAI Codex Hooks
+- Type: Official product docs
+- URL: <https://developers.openai.com/codex/hooks>
+- Why trusted: Official documentation for deterministic hook-based automation in Codex.
+- Questions answered: How to run validators automatically, enforce standards, and attach policy scripts to Codex lifecycle events.
+- Notes on paywall or uncertainty: Public docs. Hooks are marked experimental and behavior may change.
+
+### S29 - OpenAI Codex Workflows
+- Type: Official product docs
+- URL: <https://developers.openai.com/codex/workflows>
+- Why trusted: Official workflow guidance for common Codex software-development tasks.
+- Questions answered: Reproduction-and-verification loops, local review patterns, milestone-based refactors, and staged cloud delegation.
+- Notes on paywall or uncertainty: Public docs. Workflow examples are illustrative and should be adapted locally.
+
+### S30 - OpenAI Codex Subagents
+- Type: Official product docs
+- URL: <https://developers.openai.com/codex/subagents>
+- Why trusted: Official documentation for Codex subagent orchestration.
+- Questions answered: When to use subagents, explicit spawning, parallel review passes, and sandbox inheritance.
+- Notes on paywall or uncertainty: Public docs. Operational tradeoffs such as token cost still need local judgment.
+
+### S31 - OpenAI GPT-5.2-Codex Model Page
+- Type: Official model reference
+- URL: <https://developers.openai.com/api/docs/models/gpt-5.2-codex>
+- Why trusted: Current official model page for OpenAI's long-horizon coding model.
+- Questions answered: Model fit for long-horizon coding, reasoning-effort controls, and context-window characteristics.
+- Notes on paywall or uncertainty: Public docs. Model aliases, prices, and comparative positioning can change over time.
+
+### S32 - Anthropic Best Practices for Claude Code
+- Type: Official product docs
+- URL: <https://code.claude.com/docs/en/best-practices>
+- Why trusted: Official Anthropic guidance on effective Claude Code workflows.
+- Questions answered: Verification-first prompting, explore-plan-code sequencing, concise instruction files, fresh-context review patterns, and scale-out practices.
+- Notes on paywall or uncertainty: Public docs. Product workflows and command names can change.
+
+### S33 - Anthropic Claude Code Security
+- Type: Official product docs
+- URL: <https://code.claude.com/docs/en/security>
+- Why trusted: Official Anthropic security guidance for Claude Code usage.
+- Questions answered: Prompt-injection protections, permission boundaries, external-content risks, and safe handling of sensitive code.
+- Notes on paywall or uncertainty: Public docs. Security features and defaults may change as the product evolves.
 
 ## Source Prioritization Rule
 - Official framework owners and official vendor docs were used first.

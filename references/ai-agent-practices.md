@@ -12,11 +12,14 @@ This document synthesizes recent practices for running software delivery with co
 - Interoperability Between Different Models
 - Choosing Models to Save Tokens
 - Including Tests and Evals in Tasks
+- Quality-First Execution Loop
 - Learning Loops
+- Independent Review and Fresh-Context Validation
 - Managing Context Windows
 - How and When to Use Subagents
 - Preparing Work for Autonomous Agent Execution
 - Process Optimization
+- Scaling Large Refactors and Migrations
 - Guardrails
 - Recent Vendor and Benchmark Shifts
 - Unknown Unknowns to Watch
@@ -49,6 +52,7 @@ This document synthesizes recent practices for running software delivery with co
   - decision logs
   - risk and debt trackers
 - Short entry points beat giant instruction manuals. OpenAI explicitly warns against one huge `AGENTS.md`; Anthropic warns that large memory files reduce adherence and recommends a concise index with more detailed topic files behind it. [S18] [S23]
+- Layer short instruction files close to the code when needed. Current Codex guidance explicitly supports nested `AGENTS.md` files, and current Claude guidance reinforces the same "short index plus deeper files" pattern. [S26] [S27] [S32]
 
 ## Task Storage Outside the Context Window
 - Long-horizon tasks should have an explicit plan file, not only a chat history. [S17]
@@ -152,12 +156,29 @@ This document synthesizes recent practices for running software delivery with co
   - exact commands to run
   - expected success condition
   - expected failure modes or regressions to avoid
+- Prefer to define the verification artifact before implementation begins: failing repro, automated test, expected output, screenshot check, contract check, or exact manual procedure. Current Codex and Claude guidance both emphasize that agents perform best when they can verify their own work. [S26] [S29] [S32]
+- Evidence should travel with the task: commands run, outputs, screenshots, metrics, and review notes. Assertions without evidence decay quickly across handoffs. [S17] [S29] [S32]
 - OpenAI’s eval guidance is especially relevant when:
   - prompts change
   - models change
   - tool wiring changes
   - policy or rules files change
 - Evals are the behavioral regression suite for the agent workflow itself. [S16]
+
+## Quality-First Execution Loop
+- The safest default loop is:
+  - explore
+  - plan
+  - implement
+  - verify
+  - review
+  - document
+- Verification should cover invariants and non-goals, not only the happy path.
+- Every substantial task should also declare a change budget:
+  - files or modules allowed to change
+  - public interfaces that must stay stable
+  - migration, rollout, or rollback trigger when relevant
+- If automated tests do not exist yet, create the fastest credible check instead of skipping validation entirely. [S26] [S29] [S32]
 
 ## Learning Loops
 - There are three learning loops in an agentic system:
@@ -166,6 +187,11 @@ This document synthesizes recent practices for running software delivery with co
   - system loop: revise the environment so the next run is easier and safer
 - OpenAI’s harness-engineering write-up repeatedly frames failures as missing capability or missing legibility in the environment rather than "the model should just try harder". [S18]
 - DORA’s AI capability framing reinforces the same point: improvement comes from strengthening the system around the tool. [S13] [S14]
+
+## Independent Review and Fresh-Context Validation
+- Fresh context catches blind spots that the implementation context tends to normalize.
+- For risky, cross-cutting, or user-visible changes, use a separate review pass with a focused brief and a bug, regression, security, maintainability, and test-gap lens.
+- This review may be a second session, a subagent, or a dedicated review step, but it should not assume the implementation path was correct. [S29] [S30] [S32]
 
 ## Managing Context Windows
 - Keep the startup context small and stable.
@@ -216,6 +242,12 @@ This document synthesizes recent practices for running software delivery with co
   - targeted review checkpoints where throughput matters
 - The general pattern is to encode taste and policy into tools and files so the operator does not have to restate them every run. [S18]
 
+## Scaling Large Refactors and Migrations
+- For large repetitive changes, pilot on a narrow slice first: one subsystem, a few files, or one representative path.
+- Use the pilot to refine prompts, validators, and acceptance checks before scaling out.
+- Large unattended changes should also have explicit stop triggers and allowed-scope rules so the run halts when reality diverges from the plan.
+- If the same correction is needed twice, stop and improve the environment or instructions before continuing. Repeated conversational nudges are a weak control system. [S26] [S29] [S32]
+
 ## Guardrails
 - Good guardrails combine:
   - sandboxing
@@ -235,6 +267,7 @@ This document synthesizes recent practices for running software delivery with co
   - external content that may contain prompt injection or malicious instructions
   - generated artifacts that require operator signoff before execution or release
 - In practice this means the agent should not treat fetched text, issue content, or generated code as automatically trustworthy input for privileged actions. [S18] [S24]
+- Prefer deterministic hooks or validators for zero-exception checks such as required lint or test commands, forbidden path edits, and secret scanning. Advice in a prompt is weaker than a rule the environment actually enforces. [S28] [S24] [S33]
 
 ## Recent Vendor and Benchmark Shifts
 - AI-assisted delivery has become more obviously multi-agent and long-horizon. [S18] [S25]
