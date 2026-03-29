@@ -39,6 +39,7 @@ This document synthesizes recent practices for running software delivery with co
   - agents perform bounded analysis and execution
   - files, tests, and tools hold the durable state
   - evals and guardrails keep behavior inside acceptable bounds
+- In practice the main thread should act like a director: define the next bounded brief, route work to the smallest reliable worker or reviewer, collect evidence, and decide sign-off. The noisy execution details should stay in worker contexts whenever possible. [S18] [S25] [S30]
 
 ## Files as Durable Memory
 - The repository should be treated as the system of record for what the agent can actually know. [S18]
@@ -210,6 +211,7 @@ This document synthesizes recent practices for running software delivery with co
   - work can happen in parallel
   - a subtask is well-scoped and bounded
   - the main thread should preserve context for synthesis
+- Default bias: if delegation is available and a task is autonomy-ready, prefer a subagent so the main thread preserves context for coordination and synthesis.
 - Anthropic’s guidance explicitly highlights isolating high-volume operations because verbose output consumes context. [S25]
 - Practical uses:
   - repository exploration
@@ -217,6 +219,9 @@ This document synthesizes recent practices for running software delivery with co
   - log analysis
   - independent review passes
   - specialized task slices with separate scope
+- Delegate with a brief that specifies outcome, scope, constraints, tools, verification commands, expected evidence, and stop point.
+- Ask the subagent to return a concise summary, evidence, and unresolved questions instead of raw intermediate output.
+- Keep work in the main thread when it is tiny, tightly coupled, or requires rapid back-and-forth across planning, implementation, and testing. [S25] [S30]
 - Do not use subagents for vague "go think about everything" delegation. Give one job, clear outputs, and minimal required tools.
 
 ## Preparing Work for Autonomous Agent Execution
@@ -226,10 +231,13 @@ This document synthesizes recent practices for running software delivery with co
   - constraints and non-goals
   - files or modules in scope
   - acceptance tests
+  - verification commands
+  - expected evidence
   - environment commands
   - explicit stop condition
   - escalation conditions
   - guardrails for risky actions
+- This is the minimum delegation brief for a director-style workflow: the parent sets the job, the worker executes and verifies, and the parent reviews and decides the next move. [S18] [S30]
 - If any of those are missing, the agent will substitute guesses. That may be acceptable for low-risk tasks but becomes dangerous for large or cross-cutting work. [S17] [S18]
 
 ## Process Optimization

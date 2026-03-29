@@ -1,4 +1,4 @@
 interface:
   display_name: "Software Project Management"
-  short_description: "Run single-operator LLM projects in small tasks"
-  default_prompt: "Use $software-project-management to structure this single-operator LLM-driven software project with small reviewable tasks, the lightest effective artifacts, tests, and guardrails."
+  short_description: "Run single-operator LLM projects with director-first delegation"
+  default_prompt: "Use $software-project-management to structure this single-operator LLM-driven software project with director-first delegation, small reviewable tasks, bounded subagent briefs, tests, and guardrails."
