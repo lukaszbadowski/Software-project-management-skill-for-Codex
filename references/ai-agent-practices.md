@@ -56,7 +56,7 @@ This document synthesizes recent practices for running software delivery with co
 - Layer short instruction files close to the code when needed. Current Codex guidance explicitly supports nested `AGENTS.md` files, and current Claude guidance reinforces the same "short index plus deeper files" pattern. [S26] [S27] [S32]
 
 ## Task Storage Outside the Context Window
-- Long-horizon tasks should have an explicit plan file, not only a chat history. [S17]
+- Long-horizon tasks should have an explicit plan file, not only a chat history. The canonical containers are `pm/TASKS.md` and `pm/STATE.md` as defined in [file-templates.md](./file-templates.md). [S17]
 - A good task file contains:
   - task ID
   - problem statement
@@ -132,21 +132,18 @@ This document synthesizes recent practices for running software delivery with co
   - unresolved questions
   - exact files to inspect next
   - whether the next model is allowed to edit, only review, or only research
+- The canonical home for this handoff is `pm/STATE.md`; the format is shared with the Claude Code edition of this skill, so a handoff written by one tool can be resumed by the other without conversion.
 
 ## Choosing Models to Save Tokens
-- Route by task shape, not by habit.
-- Use smaller or cheaper models for:
-  - repo search and localization
-  - short summaries
-  - mechanical transformations
-  - narrow documentation edits
-  - first-pass triage
-- Use stronger reasoning or coding models for:
-  - ambiguous debugging
-  - architecture changes
-  - cross-cutting refactors
-  - long-horizon execution
-  - unresolved tradeoffs
+- Route by task shape, not by habit. Every task in `pm/TASKS.md` carries a vendor-neutral `Route:` tier assigned when it enters the queue:
+  - `light`: repo search and localization, short summaries, mechanical transformations, narrow documentation edits, formatting, log triage
+  - `standard`: bounded implementation, tests, moderate-complexity changes
+  - `heavy`: planning, decomposition, architecture, cross-cutting refactors, ambiguous debugging, review of risky work, final acceptance
+- The current tier-to-model-and-effort mapping lives in SKILL.md and should be revalidated as models and prices change. Codex routes on two axes: lower the reasoning effort within a model for simpler tasks before switching models; switch models when the cost gap matters. [S19] [S20] [S31]
+- Keep the main thread on a capable model in the director role: it plans, routes, judges evidence, and signs off; cheaper tiers execute.
+- Escalation ladder: after two failed attempts or a low-confidence result on the same task, escalate one tier and record it in the task entry. Do not stack corrections at the same tier.
+- Reviewer-tier floor: the reviewer must be at least the tier of the writer; risky or cross-cutting diffs get a fresh-context heavy review; a light-tier agent never self-approves its own work.
+- Keep model names out of `pm/` files. Tiers stay valid when the operator switches between Codex and Claude Code; only the mapping table changes.
 - OpenAI’s current model pages expose reasoning and cost differences directly; prompt caching further rewards stable prompt prefixes and repeated instruction blocks. [S15] [S19] [S20]
 - Revalidate routing whenever model snapshots, task mix, or cost constraints change. [S19] [S20]
 
